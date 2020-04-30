@@ -27,7 +27,9 @@ jobs:
           command: go get -v -t -d ./...
       - run: 
           name: Run unittest
-          command: go test -v ./...
+          command: |
+            go test -v ./... -coverpofile=c.out
+            go tool cover -html=c.out -o coverage.html
       - run: 
           name: Run unittest benchmark
           command: go test -v ./... -bench Benchmark
@@ -38,3 +40,6 @@ jobs:
       - store_artifacts:
           path: /go/src/github.com/sdil/circleci-golang/circleci-golang
           destination: circleci-golang
+
+      - store_test_results:
+          path: coverage.html
