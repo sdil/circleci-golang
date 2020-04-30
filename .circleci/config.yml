@@ -25,9 +25,14 @@ jobs:
       - run:
           name: Get deps
           command: go get -v -t -d ./...
-      # - run: go test -v ./...
       - run: 
-          name: Build executable
+          name: Run unittest
+          command: go test -v ./...
+      - run: 
+          name: Run unittest benchmark
+          command: go test -v ./... -bench Benchmark
+      - run: 
+          name: Compile go package
           command: go build
 
       - store_artifacts:
