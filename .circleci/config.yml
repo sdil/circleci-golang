@@ -40,5 +40,7 @@ jobs:
           path: gotestsum-report.xml
 
       - store_artifacts:
-          path: /go/src/github.com/sdil/circleci-golang/circleci-golang
-          destination: circleci-golang
+          path: circleci-golang
+
+      - store_artifacts:
+          path: gotestsum-report.xml
