@@ -28,7 +28,7 @@ jobs:
       - run: 
           name: Run unittest
           command: |
-            go test -v ./... -coverpofile=c.out
+            go test -v ./... -coverprofile=c.out
             go tool cover -html=c.out -o coverage.html
       - run: 
           name: Run unittest benchmark
