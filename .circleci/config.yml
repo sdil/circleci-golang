@@ -28,8 +28,7 @@ jobs:
       - run: 
           name: Run unittest
           command: |
-            go test -v ./... -coverprofile=c.out
-            go tool cover -html=c.out -o coverage.html
+            gotestsum --junitfile gotestsum-report.xml
       - run: 
           name: Run unittest benchmark
           command: go test -v ./... -bench Benchmark
@@ -42,4 +41,4 @@ jobs:
           destination: circleci-golang
 
       - store_test_results:
-          path: coverage.html
+          path: gotestsum-report.xml
